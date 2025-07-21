@@ -1,0 +1,16 @@
+[phases.setup]
+nixPkgs = ["nodejs_18"]
+
+[phases.install]
+cmds = ["yarn install"]
+
+[phases.build]
+cmds = [
+    "yarn medusa db:create",
+    "yarn medusa db:migrate",
+    "yarn run seed",
+    "yarn medusa user -e admin@test.com -p supersecret -i admin"
+]
+
+[start]
+cmd = "yarn start"
