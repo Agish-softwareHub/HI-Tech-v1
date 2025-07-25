@@ -17,7 +17,7 @@ RUN yarn install
 COPY . .
 
 # Run Medusa setup
-RUN yarn medusa migrations:run
+RUN yarn medusa db:migrate
 RUN yarn run seed
 RUN yarn medusa user -e admin@test.com -p supersecret -i admin
 
