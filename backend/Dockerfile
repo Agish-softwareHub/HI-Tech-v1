@@ -8,7 +8,7 @@ RUN corepack enable
 WORKDIR /app
 
 # Copy Yarn config + package metadata
-COPY backend/yarn.lock backend/package.json backend/.yarnrc.yml ./
+COPY . ./yarn.lock . ./package.json . ./.yarnrc.yml ./
 
 # Install dependencies using Yarn 4
 RUN yarn install
