@@ -1,16 +1,28 @@
+# Use Node base image
 FROM node:18
 
+# Enable Corepack (for Yarn 4)
+RUN corepack enable
+
+# Set working directory
 WORKDIR /app
 
-COPY package.json yarn.lock ./
-RUN corepack enable && yarn install
+# Copy Yarn config + package metadata
+COPY backend/yarn.lock backend/package.json backend/.yarnrc.yml ./
 
-COPY . .
+# Install dependencies using Yarn 4
+RUN yarn install
 
+# Copy the rest of the backend code
+COPY backend .
+
+# Run Medusa setup
 RUN yarn medusa migrations:run
 RUN yarn run seed
 RUN yarn medusa user -e admin@test.com -p supersecret -i admin
 
+# Expose backend port
 EXPOSE 9000
 
+# Start server
 CMD ["yarn", "start"]
