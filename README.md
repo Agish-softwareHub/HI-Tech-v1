@@ -124,8 +124,8 @@ git clone https://github.com/medusajs/b2b-starter-medusa.git
 # Go to the folder
 cd ./backend
 
-# Clone .env.template
-cp .env.template .env
+# Clone .env
+cp .env .env
 
 # Install dependencies
 yarn install
@@ -141,8 +141,8 @@ yarn dev
 # Go to folder
 cd ../storefront
 
-# Clone .env.template
-cp .env.template .env
+# Clone .env
+cp .env .env
 
 # Install dependencies
 yarn install
