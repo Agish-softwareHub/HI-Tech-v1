@@ -14,7 +14,7 @@ COPY backend/yarn.lock backend/package.json backend/.yarnrc.yml ./
 RUN yarn install
 
 # Copy the rest of the backend code
-COPY backend .
+COPY . .
 
 # Run Medusa setup
 RUN yarn medusa migrations:run
