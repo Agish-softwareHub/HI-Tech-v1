@@ -1,8 +1,12 @@
 [phases.setup]
-nixpkgs = ["nodejs_18", "yarn"]
+nixpkgs = ["nodejs_18"]
 
 [phases.install]
-cmds = ["yarn install"]
+cmds = [
+  "corepack enable",
+  "corepack prepare yarn@4.4.0 --activate",
+  "yarn install"
+]
 
 [phases.build]
 cmds = [
